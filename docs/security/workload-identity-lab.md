@@ -103,7 +103,7 @@ Run the following command to create a Managed Identity.
 az identity create \
 --resource-group ${RG_NAME} \
 --name ${USER_ASSIGNED_IDENTITY_NAME} \
---location ${LOCATION} \
+--location ${LOCATION}
 ```
 
 You will need several properties of the managed identity for the next steps. Run the following commands to capture the details of the managed identity and save the values as environment variables.
@@ -113,6 +113,7 @@ You will need several properties of the managed identity for the next steps. Run
 export USER_ASSIGNED_CLIENT_ID="$(az identity show \
 --resource-group ${RG_NAME} \
 --name ${USER_ASSIGNED_IDENTITY_NAME} \
+--query "clientId" \
 --output tsv)"
 export USER_ASSIGNED_PRINCIPAL_ID="$(az identity show \
 --name "${USER_ASSIGNED_IDENTITY_NAME}" \
